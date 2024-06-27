@@ -1,1 +1,34 @@
-hellohelloworld!
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>博客索引</title>
+</head>
+<body>
+  <h1>博客索引</h1>
+
+  <ul>
+    <!-- 使用 JavaScript 动态读取 _posts 目录下的文件 -->
+    <script>
+      // 获取 _posts 目录中的所有文件
+      fetch('_posts/')
+        .then(response => response.text())
+        .then(data => {
+          // 使用正则表达式提取 Markdown 文件名
+          const regex = /<a href="(.*)">.*<\/a>/g;
+          let match;
+          while ((match = regex.exec(data)) !== null) {
+            const filename = match[1];
+            // 创建列表项并添加到博客索引中
+            const listItem = document.createElement('li');
+            const link = document.createElement('a');
+            link.href = '_posts/' + filename;
+            link.textContent = filename.replace('.md', '');
+            listItem.appendChild(link);
+            document.querySelector('ul').appendChild(listItem);
+          }
+        });
+    </script>
+  </ul>
+</body>
+</html>
