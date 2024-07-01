@@ -7,25 +7,37 @@
 <body>
   <h1>博客索引</h1>
 
-  <ul>
-    <!-- 使用 JavaScript 动态读取 _post 目录下的文件 -->
+  <ul id="post-list">
+    <!-- 使用 JavaScript 动态读取 _post 目录下的文件夹和文件 -->
     <script>
-      // 获取 _post 目录中的所有文件
+      // 获取 _post 目录中的所有文件夹和文件
       fetch('_post/')
         .then(response => response.text())
         .then(data => {
-          // 使用正则表达式提取 Markdown 文件名
+          // 使用正则表达式提取文件夹和文件名
           const regex = /<a href="(.*)">.*<\/a>/g;
           let match;
           while ((match = regex.exec(data)) !== null) {
-            const filename = match[1];
-            // 创建列表项并添加到博客索引中
-            const listItem = document.createElement('li');
-            const link = document.createElement('a');
-            link.href = '_post/' + filename;
-            link.textContent = filename.replace('.md', '');
-            listItem.appendChild(link);
-            document.querySelector('ul').appendChild(listItem);
+            const filePath = match[1];
+            const fileName = filePath.split('/').pop();
+            // 检查是否为文件夹
+            if (filePath.endsWith('/')) {
+              // 创建文件夹列表项并添加到博客索引中
+              const folderListItem = document.createElement('li');
+              const folderLink = document.createElement('a');
+              folderLink.href = filePath;
+              folderLink.textContent = fileName;
+              folderListItem.appendChild(folderLink);
+              document.querySelector('#post-list').appendChild(folderListItem);
+            } else {
+              // 创建文件列表项并添加到博客索引中
+              const fileListItem = document.createElement('li');
+              const fileLink = document.createElement('a');
+              fileLink.href = filePath;
+              fileLink.textContent = fileName;
+              fileListItem.appendChild(fileLink);
+              document.querySelector('#post-list').appendChild(fileListItem);
+            }
           }
         });
     </script>
