@@ -8,10 +8,10 @@
   <h1>博客索引</h1>
 
   <ul>
-    <!-- 使用 JavaScript 动态读取 _posts 目录下的文件 -->
+    <!-- 使用 JavaScript 动态读取 _post 目录下的文件 -->
     <script>
-      // 获取 _posts 目录中的所有文件
-      fetch('_posts/')
+      // 获取 _post 目录中的所有文件
+      fetch('_post/')
         .then(response => response.text())
         .then(data => {
           // 使用正则表达式提取 Markdown 文件名
@@ -22,7 +22,7 @@
             // 创建列表项并添加到博客索引中
             const listItem = document.createElement('li');
             const link = document.createElement('a');
-            link.href = '_posts/' + filename;
+            link.href = '_post/' + filename;
             link.textContent = filename.replace('.md', '');
             listItem.appendChild(link);
             document.querySelector('ul').appendChild(listItem);
