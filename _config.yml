@@ -13,11 +13,11 @@ future: true
 
 # SNS settings
 RSS: false
-weibo_username: SJJ
+weibo_username: 
 zhihu_username: SJJ
-github_username: SJJ
-twitter_username: SJJ
-#facebook_username:  SJJ
+github_username: jiajunsun68
+twitter_username: 
+#facebook_username:  
 #linkedin_username:  firstname-lastname-idxxxx
 
 # Build settings
