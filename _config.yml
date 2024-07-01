@@ -75,7 +75,7 @@ ga_domain: https://blog.csdn.net/JiajunSun
 # Sidebar settings
 sidebar: true # whether or not using Sidebar.
 sidebar-about-description: "励志成为王炸的对三 <br> React Team @ Meta"
-sidebar-avatar: https://github.com/jiajunsun68/jiajunsun68.github.io/blob/main/img/SJJ.png # use absolute URL, seeing it's used in both `/` and `/about/`
+sidebar-avatar: img/SJJ.png # use absolute URL, seeing it's used in both `/` and `/about/`
 
 # Featured Tags
 featured-tags: true # whether or not using Feature-Tags
