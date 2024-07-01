@@ -1,3 +1,14 @@
+---
+layout:     post
+title:      "什么是transformer"
+subtitle:   ""
+date:       2024-06-03 12:00:00
+author:     "SJJ"
+header-img: "img/post-bg-android.jpg"
+tags:
+    - transformer
+    - token
+---
 # 1. what is token[^2]
 
 the inputs of model are broken up into a brunch of little pieces called 'token’s which are associated as vectors as showed in Fig. 1![Fig. 1.1 tokens](https://img-blog.csdnimg.cn/direct/df5044dcdfe84fa19662c2189e817141.png)
