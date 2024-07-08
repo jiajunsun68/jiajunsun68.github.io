@@ -87,7 +87,7 @@ the input of Attention will be figured by three linear layers: V, K, Q for featu
 
 **Fig. 2.7 the process of multi-head Attention**
 
-Attention(Q,K,V)=softmax(QKTdk)VAttention(*Q*,*K*,*V*)=softmax(*d**k**Q**K**T*)*V*
+$$Attention(Q,K,V)=softmax(QKTdk)VAttention(*Q*,*K*,*V*)=softmax(*d**k**Q**K**T*)*V*$$
 the dimensions of input x will not be changed by multi-head attention.
 
 ### 2.4.1 SoftMax
