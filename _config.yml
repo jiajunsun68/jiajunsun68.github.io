@@ -59,7 +59,7 @@ kramdown:
       line_numbers: true
       start_line: 1
 
-# Disqus settings
+# Disqus settings 这里不填的话，每个post后面就不用显示评论了
 disqus_username:
 
 # Netease settings
