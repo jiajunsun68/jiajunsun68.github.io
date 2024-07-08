@@ -11,9 +11,9 @@ tags:
 ---
 
 $$Attention(Q,K,V)=softmax(QKTdk)V$$
-<p>这是一个数学公式的例子：\( E = mc^2 \)。</p>
+<p></p>
 $$Attention(Q,K,V)=softmax(QKTdk)V$$
-
+<p></p>
 the dimensions of input x will not be changed by multi-head attention.
 
 As mentioned before, we hope that the last vector of matrix after a seirs of process has the information of all of the context. so that we can forecast the output word just referring to this last vector. this process is showed in Fig. 3.2
