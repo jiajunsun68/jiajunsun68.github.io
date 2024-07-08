@@ -2,6 +2,7 @@
 <hr>
 <h5>FRIENDS</h5>
 <ul class="list-inline">
+  <!-- site._指向_config.myl文件 -->
   {% for friend in site.friends %}
   <li><a href="{{friend.href}}">{{friend.title}}</a></li>
   {% endfor %}
