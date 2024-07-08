@@ -14,7 +14,7 @@ $$Attention(Q,K,V)=softmax(QKTdk)V$$
 
 
 the dimensions of input x will not be changed by multi-head attention.
-
+$$Attention(Q,K,V)=softmax(QKTdk)V$$
 As mentioned before, we hope that the last vector of matrix after a seirs of process has the information of all of the context. so that we can forecast the output word just referring to this last vector. this process is showed in Fig. 3.2
 ![在这里插入图片描述](https://img-blog.csdnimg.cn/direct/df1a269b282149879d72031de443decc.png)
 
