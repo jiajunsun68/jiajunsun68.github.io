@@ -1,1 +1,2 @@
 jiajunsun68.github.io
+现在FEATURED TAGS还不能正常显示，posts里的公式和图片能在预览中正常显示，但是在网页中不能正常显示
