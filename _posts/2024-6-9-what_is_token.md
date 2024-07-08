@@ -9,7 +9,7 @@ tags:
     - transformer
     - token
 ---
-
+# what is token
 $$Attention(Q,K,V)=softmax(QKTdk)V$$
 the dimensions of input x will not be changed by multi-head attention.
 $$Attention(Q,K,V)=softmax(QKTdk)V$$
