@@ -9,9 +9,10 @@
 </section>
 
 <main class="home-main-wrap">
-  <section class="home-grid container-fluid">
-    <aside class="profile-column">
-      <div class="profile-card">
+  <section class="home-grid container-fluid home-layout">
+    <aside class="profile-column home-sidebar">
+      <div class="profile-card home-panel">
+        <div class="home-panel-label">Profile</div>
         <img id="profile-avatar" src="{{ site.baseurl }}/img/SJJ.png" alt="avatar" class="profile-avatar">
         <h2 id="profile-nickname" class="profile-nickname">SJJ</h2>
         <p id="profile-signature" class="profile-signature">Keep hands and mind updated.</p>
@@ -25,14 +26,18 @@
       </div>
     </aside>
 
-    <section class="content-column">
-      <div class="content-card">
-        <h2>Papers</h2>
+    <section class="content-column home-content">
+      <div class="content-card home-panel home-section home-section--papers">
+        <div class="home-panel-label">Papers</div>
+        <h2>Publications</h2>
+        <p class="home-section-note">Each paper uses the same card layout: title on top, image on the left, metadata and abstract on the right.</p>
         <div id="papers-list" class="papers-list"></div>
       </div>
 
-      <div class="content-card">
-        <h2>Project Experience</h2>
+      <div class="content-card home-panel home-section home-section--projects">
+        <div class="home-panel-label">Project Experience</div>
+        <h2>Projects</h2>
+        <p class="home-section-note">Project cards follow the same grid so the page reads as one consistent timeline of work.</p>
         <div id="projects-list" class="projects-list"></div>
       </div>
     </section>

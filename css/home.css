@@ -5,7 +5,7 @@
   align-items: center;
   justify-content: center;
   text-align: center;
-  background-image: url('../img/home-bg.jpg');
+  background-image: url('../img/TaiShan.jpg');
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -51,8 +51,8 @@
   width: 100%;
   margin: 0;
   display: grid;
-  grid-template-columns: 200px minmax(0, 1fr);
-  gap: 20px;
+  grid-template-columns: minmax(240px, 280px) minmax(0, 1fr);
+  gap: 24px;
   align-items: start;
   padding: 0;
 }
@@ -72,7 +72,7 @@
 }
 
 .profile-column {
-  max-width: 200px;
+  max-width: 280px;
   justify-self: start;
 }
 
@@ -153,21 +153,54 @@
 
 .content-column {
   display: grid;
-  gap: 20px;
+  gap: 22px;
   width: 100%;
   min-width: 0;
 }
 
 .content-card {
-  padding: 18px;
+  padding: 20px 18px 18px;
   width: 100%;
 }
 
 .content-card h2 {
-  margin: 0 0 16px;
+  margin: 0 0 8px;
   color: #0f3f60;
   border-bottom: 2px solid rgba(15, 63, 96, 0.16);
   padding-bottom: 8px;
+}
+
+.home-panel {
+  position: relative;
+}
+
+.home-panel-label {
+  display: inline-flex;
+  align-items: center;
+  margin-bottom: 10px;
+  padding: 4px 10px;
+  border-radius: 999px;
+  background: rgba(15, 95, 141, 0.10);
+  color: #0f5f8d;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+}
+
+.home-section-note {
+  margin: 0 0 14px;
+  color: #587283;
+  font-size: 13px;
+  line-height: 1.5;
+}
+
+.home-section--papers {
+  border-left: 4px solid rgba(15, 95, 141, 0.28);
+}
+
+.home-section--projects {
+  border-left: 4px solid rgba(46, 118, 97, 0.28);
 }
 
 .media-card {
@@ -179,7 +212,7 @@
 }
 
 .media-card-header {
-  margin-bottom: 10px;
+  margin-bottom: 12px;
 }
 
 .media-card-title {
@@ -206,8 +239,8 @@
 
 .media-card-main {
   display: grid;
-  grid-template-columns: minmax(0, 320px) minmax(0, 1fr);
-  gap: 18px;
+  grid-template-columns: minmax(0, 300px) minmax(0, 1fr);
+  gap: 16px;
   align-items: stretch;
   min-height: 240px;
 }
@@ -249,7 +282,7 @@
   flex-direction: column;
   justify-content: flex-start;
   gap: 6px;
-  max-height: 288px;
+  max-height: 280px;
   overflow: hidden;
 }
 
@@ -315,6 +348,10 @@
     padding: 0;
   }
 
+  .profile-column {
+    max-width: none;
+  }
+
   .media-card-main {
     grid-template-columns: 1fr;
     min-height: 0;
@@ -338,5 +375,9 @@
 
   .profile-card {
     position: static;
+  }
+
+  .content-card h2 {
+    margin-bottom: 6px;
   }
 }
