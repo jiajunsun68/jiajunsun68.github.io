@@ -168,6 +168,30 @@
   border-bottom: 1px solid rgba(16, 64, 95, 0.14);
 }
 
+.paper-item {
+  display: grid;
+  grid-template-columns: minmax(170px, 240px) minmax(0, 1fr);
+  gap: 16px;
+  align-items: start;
+}
+
+.paper-media {
+  width: 100%;
+}
+
+.paper-cover {
+  width: 100%;
+  height: 170px;
+  object-fit: cover;
+  border-radius: 12px;
+  border: 1px solid rgba(18, 67, 98, 0.18);
+  box-shadow: 0 8px 18px rgba(15, 54, 80, 0.14);
+}
+
+.paper-body {
+  min-width: 0;
+}
+
 .paper-item:last-child,
 .project-item:last-child {
   border-bottom: none;
@@ -187,6 +211,12 @@
   border-bottom: 1px solid rgba(10, 47, 73, 0.25);
 }
 
+.paper-title-text {
+  color: #0a2f49;
+  font-size: 19px;
+  font-weight: 600;
+}
+
 .paper-authors,
 .paper-field,
 .paper-abstract,
@@ -201,6 +231,22 @@
 .project-period {
   color: #0c3d5c;
   font-weight: 700;
+}
+
+.project-name {
+  margin-top: 4px;
+  color: #0b3e5f;
+  font-size: 17px;
+  font-weight: 700;
+}
+
+.project-contrib-list {
+  margin: 8px 0 0 0;
+  padding-left: 18px;
+}
+
+.project-contrib-list .project-contrib {
+  margin-top: 4px;
 }
 
 .empty-placeholder {
@@ -224,6 +270,14 @@
   .home-grid {
     grid-template-columns: 1fr;
     gap: 16px;
+  }
+
+  .paper-item {
+    grid-template-columns: 1fr;
+  }
+
+  .paper-cover {
+    height: 210px;
   }
 
   .profile-card {

@@ -1,3 +1,32 @@
 {
-  "papers": []
+  "papers": [
+    {
+      "venue": "ACS Photonics",
+      "year": 2025,
+      "title": "Ultrasensitive MoTe2 Circular Polarization Detectors with Monolithically Integrated Liquid Crystal Bifocal Lens",
+      "url": "https://pubs.acs.org/doi/full/10.1021/acsphotonics.5c01699",
+      "authorsHtml": "Qiao, J., Song, S., Wang, Z., Jiang, Y., <strong>Sun, J.</strong>, Liu, C., ... &amp; Yuan, X.",
+      "field": "物理",
+      "abstract": "Recent advances in polarization-sensitive photodetection have highlighted the growing importance of circular polarization discrimination in emerging optoelectronic applications. We report a novel integrated photodetector system that combines a liquid crystal bifocal lens with two-dimensional MoTe2 to achieve the high-sensitivity detection of circularly polarized light (CPL) without conventional optical components.",
+      "image": "data/imgs/paper-placeholder.svg"
+    },
+    {
+      "venue": "Measurement",
+      "year": 2025,
+      "title": "Numerical simulation and remote measurement of temperature-dependent surface acoustic wave velocity by laser ultrasonics",
+      "url": "https://www.sciencedirect.com/science/article/pii/S0263224125019724",
+      "authorsHtml": "Qiao, J., Feng, F., Huo, D., <strong>Sun, J.</strong>, &amp; Somekh, M",
+      "field": "物理",
+      "abstract": "Nondestructive evaluation using surface acoustic waves (SAWs) has garnered significant interest for applications in crystallization and material detection. In this study, we explore the temperature-dependent velocities of SAWs in nickel-based superalloys both numerically and experimentally, utilizing a laser ultrasonic technique. This study advances laser ultrasonics by introducing a nonlinear FEM model that couples thermoelastic effects with temperature-dependent material properties, validated experimentally with a resolution of 1 K in simulations.",
+      "image": "data/imgs/paper-placeholder.svg"
+    },
+    {
+      "venue": "专利",
+      "year": 2025,
+      "title": "高温超导薄膜临界电流密度检测装置及方法",
+      "authorsHtml": "乔杰，方宵，张学莹，<strong>孙家俊</strong>",
+      "field": "科学装置",
+      "image": "data/imgs/paper-placeholder.svg"
+    }
+  ]
 }

@@ -17,6 +17,19 @@
     return node;
   }
 
+  function setTextOrHtml(node, value, useHtml) {
+    if (!node) return;
+    if (!value) {
+      node.textContent = "";
+      return;
+    }
+    if (useHtml) {
+      node.innerHTML = value;
+    } else {
+      node.textContent = value;
+    }
+  }
+
   function renderProfile(data) {
     var hero = data.hero || {};
     var profile = data.profile || {};
@@ -89,19 +102,36 @@
     list.innerHTML = "";
     papers.forEach(function (paper) {
       var item = createNode("article", "paper-item");
-      item.appendChild(createNode("div", "paper-tag", "[" + (paper.venue || "Venue") + " " + (paper.year || "Year") + "]"));
+      var media = createNode("div", "paper-media");
+      var mediaImg = createNode("img", "paper-cover");
+      mediaImg.src = resolveUrl(paper.image || "data/imgs/paper-placeholder.svg");
+      mediaImg.alt = paper.title || "paper cover";
+      media.appendChild(mediaImg);
+
+      var body = createNode("div", "paper-body");
+      body.appendChild(createNode("div", "paper-tag", "[" + (paper.venue || "Venue") + " " + (paper.year || "Year") + "]"));
 
       var title = createNode("div", "paper-title");
-      var link = createNode("a", "", paper.title || "Untitled");
-      link.href = paper.url || "#";
-      link.target = "_blank";
-      link.rel = "noopener noreferrer";
-      title.appendChild(link);
-      item.appendChild(title);
+      if (paper.url) {
+        var link = createNode("a", "", paper.title || "Untitled");
+        link.href = paper.url;
+        link.target = "_blank";
+        link.rel = "noopener noreferrer";
+        title.appendChild(link);
+      } else {
+        title.appendChild(createNode("span", "paper-title-text", paper.title || "Untitled"));
+      }
+      body.appendChild(title);
 
-      item.appendChild(createNode("div", "paper-authors", "Authors: " + (paper.authors || "")));
-      item.appendChild(createNode("div", "paper-field", "Field: " + (paper.field || "")));
-      item.appendChild(createNode("div", "paper-abstract", "Abstract: " + (paper.abstract || "")));
+      var authors = createNode("div", "paper-authors");
+      setTextOrHtml(authors, "Authors: " + (paper.authorsHtml || paper.authors || ""), !!paper.authorsHtml);
+      body.appendChild(authors);
+
+      body.appendChild(createNode("div", "paper-field", "Field: " + (paper.field || "")));
+      body.appendChild(createNode("div", "paper-abstract", "Abstract: " + (paper.abstract || "")));
+
+      item.appendChild(media);
+      item.appendChild(body);
 
       list.appendChild(item);
     });
@@ -121,8 +151,21 @@
     projects.forEach(function (project) {
       var item = createNode("article", "project-item");
       item.appendChild(createNode("div", "project-period", project.period || ""));
+      item.appendChild(createNode("div", "project-name", project.name || ""));
       item.appendChild(createNode("div", "project-org", project.organization || ""));
-      item.appendChild(createNode("div", "project-contrib", project.contribution || ""));
+
+      var contribWrap = createNode("ul", "project-contrib-list");
+      var contributions = project.contributions || [];
+      if (contributions.length) {
+        contributions.forEach(function (c) {
+          var li = createNode("li", "project-contrib", c);
+          contribWrap.appendChild(li);
+        });
+        item.appendChild(contribWrap);
+      } else if (project.contribution) {
+        item.appendChild(createNode("div", "project-contrib", project.contribution));
+      }
+
       list.appendChild(item);
     });
   }
