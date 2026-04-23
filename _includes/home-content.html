@@ -1,48 +1,60 @@
 <link rel="stylesheet" href="{{ site.baseurl }}/css/home.css">
 
-<section class="home-hero" id="home-hero">
-  <div class="home-hero-mask"></div>
-  <div class="home-hero-content">
-    <h1 id="hero-title">Sun Jiajun</h1>
-    <p id="hero-subtitle">Researcher in Computer Science</p>
-  </div>
-</section>
+<div class="home-page">
+  <header class="home-hero" id="home-hero">
+    <nav class="home-hero-nav" aria-label="Home navigation">
+      <a href="#profile">Profile</a>
+      <a href="#papers">Papers</a>
+      <a href="#projects">Projects</a>
+      <a href="#github">GitHub</a>
+    </nav>
+    <div class="home-hero-content">
+      <p class="home-hero-kicker">jiajunsun68</p>
+      <h1 id="hero-title">Sun Jiajun</h1>
+      <p id="hero-subtitle">Researcher in Computer Science</p>
+    </div>
+  </header>
 
-<main class="home-main-wrap">
-  <section class="home-grid container-fluid home-layout">
-    <aside class="profile-column home-sidebar">
-      <div class="profile-card home-panel">
-        <div class="home-panel-label">Profile</div>
-        <img id="profile-avatar" src="{{ site.baseurl }}/img/SJJ.png" alt="avatar" class="profile-avatar">
-        <h2 id="profile-nickname" class="profile-nickname">SJJ</h2>
-        <p id="profile-signature" class="profile-signature">Keep hands and mind updated.</p>
+  <main class="home-main-wrap">
+    <section class="home-grid home-layout">
+      <aside class="profile-column home-sidebar" id="profile">
+        <div class="profile-card home-panel">
+          <div class="home-panel-label">Profile</div>
+          <img id="profile-avatar" src="{{ site.baseurl }}/img/SJJ.png" alt="avatar" class="profile-avatar">
+          <h2 id="profile-nickname" class="profile-nickname">SJJ</h2>
+          <p id="profile-signature" class="profile-signature">Keep hands and mind updated.</p>
 
-        <div class="profile-degree-group" id="profile-degrees"></div>
+          <div class="profile-degree-group" id="profile-degrees"></div>
 
-        <div class="profile-links">
-          <h3>Links</h3>
-          <div id="profile-links-grid" class="profile-links-grid"></div>
+          <div class="profile-links">
+            <h3>Links</h3>
+            <div id="profile-links-grid" class="profile-links-grid"></div>
+          </div>
         </div>
-      </div>
-    </aside>
+      </aside>
 
-    <section class="content-column home-content">
-      <div class="content-card home-panel home-section home-section--papers">
-        <div class="home-panel-label">Papers</div>
-        <h2>Publications</h2>
-        <p class="home-section-note">Each paper uses the same card layout: title on top, image on the left, metadata and abstract on the right.</p>
-        <div id="papers-list" class="papers-list"></div>
-      </div>
+      <section class="content-column home-content">
+        <section class="content-card home-panel home-section home-section--papers" id="papers">
+          <div class="home-panel-label">Papers</div>
+          <h2>Publications</h2>
+          <p class="home-section-note">Selected papers and publication records are listed here in the same visual rhythm as the rest of the page.</p>
+          <div id="papers-list" class="papers-list"></div>
+        </section>
 
-      <div class="content-card home-panel home-section home-section--projects">
-        <div class="home-panel-label">Project Experience</div>
-        <h2>Projects</h2>
-        <p class="home-section-note">Project cards follow the same grid so the page reads as one consistent timeline of work.</p>
-        <div id="projects-list" class="projects-list"></div>
-      </div>
+        <section class="content-card home-panel home-section home-section--projects" id="projects">
+          <div class="home-panel-label">Project Experience</div>
+          <h2>Projects</h2>
+          <p class="home-section-note">Project work appears below the papers so the page reads as one continuous portfolio.</p>
+          <div id="projects-list" class="projects-list"></div>
+        </section>
+      </section>
     </section>
-  </section>
-</main>
+  </main>
+
+  <footer class="home-footer" id="github">
+    <a class="home-footer__github" href="https://github.com/{{ site.github_username }}" target="_blank" rel="noopener noreferrer">GitHub</a>
+  </footer>
+  </div>
 
 <script>
   window.SITE_BASEURL = "{{ site.baseurl }}";
