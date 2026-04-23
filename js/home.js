@@ -36,6 +36,50 @@
     return String(authorsText).replace(/\*\*(.+?)\*\*/g, "<strong>$1</strong>");
   }
 
+  function createMediaCard(rootClass, titleClass, titleText, titleUrl, badgeText) {
+    var item = createNode("article", rootClass);
+    var header = createNode("div", "media-card-header");
+
+    var title = createNode("div", titleClass);
+    if (titleUrl) {
+      var link = createNode("a", "media-card-title-link", titleText || "Untitled");
+      link.href = titleUrl;
+      link.target = "_blank";
+      link.rel = "noopener noreferrer";
+      title.appendChild(link);
+    } else {
+      title.appendChild(createNode("span", "media-card-title-text", titleText || "Untitled"));
+    }
+    header.appendChild(title);
+    item.appendChild(header);
+
+    var main = createNode("div", "media-card-main");
+    var media = createNode("div", "media-card-media");
+    var content = createNode("div", "media-card-content");
+
+    if (badgeText) {
+      media.appendChild(createNode("div", "media-card-badge", badgeText));
+    }
+
+    var mediaImg = createNode("img", "media-card-image");
+    mediaImg.alt = titleText || "card image";
+    mediaImg.onerror = function () {
+      this.onerror = null;
+      this.src = resolveUrl("data/imgs/paper-placeholder.svg");
+    };
+    media.appendChild(mediaImg);
+
+    main.appendChild(media);
+    main.appendChild(content);
+    item.appendChild(main);
+
+    return {
+      item: item,
+      mediaImg: mediaImg,
+      content: content
+    };
+  }
+
   function renderProfile(data) {
     var hero = data.hero || {};
     var profile = data.profile || {};
@@ -107,48 +151,25 @@
 
     list.innerHTML = "";
     papers.forEach(function (paper) {
-      var item = createNode("article", "paper-item");
-      var header = createNode("div", "paper-header");
-      header.appendChild(createNode("div", "paper-tag", "[" + (paper.venue || "Venue") + " " + (paper.year || "Year") + "]"));
+      var card = createMediaCard(
+        "media-card media-card--paper",
+        "media-card-title media-card-title--paper",
+        paper.title || "Untitled",
+        paper.url,
+        "[" + (paper.venue || "Venue") + " " + (paper.year || "Year") + "]"
+      );
+      card.mediaImg.src = resolveUrl(paper.image || "data/imgs/paper-placeholder.svg");
+      card.mediaImg.alt = paper.title || "paper cover";
 
-      var title = createNode("div", "paper-title");
-      if (paper.url) {
-        var link = createNode("a", "", paper.title || "Untitled");
-        link.href = paper.url;
-        link.target = "_blank";
-        link.rel = "noopener noreferrer";
-        title.appendChild(link);
-      } else {
-        title.appendChild(createNode("span", "paper-title-text", paper.title || "Untitled"));
-      }
-      header.appendChild(title);
-      item.appendChild(header);
-
-      var main = createNode("div", "paper-main");
-      var media = createNode("div", "paper-media");
-      var mediaImg = createNode("img", "paper-cover");
-      mediaImg.src = resolveUrl(paper.image || "data/imgs/paper-placeholder.svg");
-      mediaImg.alt = paper.title || "paper cover";
-      mediaImg.onerror = function () {
-        this.onerror = null;
-        this.src = resolveUrl("data/imgs/paper-placeholder.svg");
-      };
-      media.appendChild(mediaImg);
-
-      var body = createNode("div", "paper-body");
-      var authors = createNode("div", "paper-authors");
+      var authors = createNode("div", "media-card-line media-card-authors");
       var authorsHtml = toSafeAuthorsHtml(paper.authorsHtml, paper.authors);
       setTextOrHtml(authors, "Authors: " + (authorsHtml || ""), !!authorsHtml);
-      body.appendChild(authors);
 
-      body.appendChild(createNode("div", "paper-field", "Field: " + (paper.field || "")));
-      body.appendChild(createNode("div", "paper-abstract", "Abstract: " + (paper.abstract || "")));
+      card.content.appendChild(authors);
+      card.content.appendChild(createNode("div", "media-card-line media-card-field", "Field: " + (paper.field || "")));
+      card.content.appendChild(createNode("div", "media-card-line media-card-abstract", "Abstract: " + (paper.abstract || "")));
 
-      main.appendChild(media);
-      main.appendChild(body);
-      item.appendChild(main);
-
-      list.appendChild(item);
+      list.appendChild(card.item);
     });
   }
 
@@ -164,25 +185,17 @@
 
     list.innerHTML = "";
     projects.forEach(function (project) {
-      var item = createNode("article", "project-item");
-      var header = createNode("div", "project-header");
-      header.appendChild(createNode("div", "project-period", project.period || ""));
-      header.appendChild(createNode("div", "project-name", project.name || ""));
-      item.appendChild(header);
+      var card = createMediaCard(
+        "media-card media-card--project",
+        "media-card-title media-card-title--project",
+        project.name || "Untitled",
+        project.url,
+        project.period || ""
+      );
+      card.mediaImg.src = resolveUrl(project.image || "data/imgs/paper-placeholder.svg");
+      card.mediaImg.alt = project.name || "project cover";
 
-      var main = createNode("div", "project-main");
-      var media = createNode("div", "project-media");
-      var mediaImg = createNode("img", "project-cover");
-      mediaImg.src = resolveUrl(project.image || "data/imgs/paper-placeholder.svg");
-      mediaImg.alt = project.name || "project cover";
-      mediaImg.onerror = function () {
-        this.onerror = null;
-        this.src = resolveUrl("data/imgs/paper-placeholder.svg");
-      };
-      media.appendChild(mediaImg);
-
-      var body = createNode("div", "project-body");
-      body.appendChild(createNode("div", "project-org", project.organization || ""));
+      card.content.appendChild(createNode("div", "media-card-line media-card-org", project.organization || ""));
 
       var contribWrap = createNode("ul", "project-contrib-list");
       var contributions = project.contributions || [];
@@ -191,16 +204,12 @@
           var li = createNode("li", "project-contrib", c);
           contribWrap.appendChild(li);
         });
-        body.appendChild(contribWrap);
+        card.content.appendChild(contribWrap);
       } else if (project.contribution) {
-        body.appendChild(createNode("div", "project-contrib", project.contribution));
+        card.content.appendChild(createNode("div", "media-card-line media-card-contrib", project.contribution));
       }
 
-      main.appendChild(media);
-      main.appendChild(body);
-      item.appendChild(main);
-
-      list.appendChild(item);
+      list.appendChild(card.item);
     });
   }
 

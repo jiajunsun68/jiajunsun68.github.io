@@ -170,8 +170,7 @@
   padding-bottom: 8px;
 }
 
-.paper-item,
-.project-item {
+.media-card {
   padding: 16px;
   border: 1px solid rgba(16, 64, 95, 0.14);
   border-radius: 14px;
@@ -179,29 +178,48 @@
   margin-bottom: 12px;
 }
 
-.paper-item {
-  display: block;
-}
-
-.paper-header {
+.media-card-header {
   margin-bottom: 10px;
 }
 
-.paper-main {
-  display: grid;
-  grid-template-columns: minmax(360px, 42%) minmax(0, 1fr);
-  gap: 18px;
-  align-items: stretch;
-  min-height: 190px;
+.media-card-title {
+  min-width: 0;
 }
 
-.paper-media {
+.media-card-title a,
+.media-card-title-text {
+  color: #0a2f49;
+  font-size: 19px;
+  text-decoration: none;
+  border-bottom: 1px solid rgba(10, 47, 73, 0.25);
+  font-weight: 600;
+}
+
+.media-card-title a:hover {
+  color: #15557d;
+}
+
+.media-card-title--project a,
+.media-card-title--project .media-card-title-text {
+  font-size: 18px;
+}
+
+.media-card-main {
+  display: grid;
+  grid-template-columns: minmax(0, 320px) minmax(0, 1fr);
+  gap: 18px;
+  align-items: stretch;
+  min-height: 240px;
+}
+
+.media-card-media {
+  position: relative;
   width: 100%;
-  aspect-ratio: 8 / 6;
+  aspect-ratio: 4 / 3;
   overflow: hidden;
 }
 
-.paper-cover {
+.media-card-image {
   width: 100%;
   height: 100%;
   object-fit: cover;
@@ -211,101 +229,57 @@
   min-width: 0;
 }
 
-.paper-body {
+.media-card-badge {
+  position: absolute;
+  right: 10px;
+  top: 10px;
+  z-index: 2;
+  padding: 5px 10px;
+  border-radius: 999px;
+  background: rgba(15, 95, 141, 0.94);
+  color: #ffffff;
+  font-size: 12px;
+  font-weight: 700;
+  box-shadow: 0 4px 10px rgba(8, 35, 53, 0.2);
+}
+
+.media-card-content {
   min-width: 0;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
+  gap: 6px;
+  max-height: 288px;
+  overflow: hidden;
 }
 
-.paper-item:last-child,
-.project-item:last-child {
+.media-card:last-child {
   margin-bottom: 0;
 }
 
-.paper-tag {
-  color: #10476b;
-  font-size: 13px;
-  font-weight: 700;
-  margin-bottom: 5px;
-}
-
-.paper-title a {
-  color: #0a2f49;
-  font-size: 19px;
-  text-decoration: none;
-  border-bottom: 1px solid rgba(10, 47, 73, 0.25);
-}
-
-.paper-title-text {
-  color: #0a2f49;
-  font-size: 19px;
-  font-weight: 600;
-}
-
-.paper-authors,
-.paper-field,
-.paper-abstract,
-.project-org,
-.project-contrib {
+.media-card-line,
+.media-card-authors,
+.media-card-field,
+.media-card-abstract,
+.media-card-org,
+.media-card-contrib {
   margin-top: 6px;
   color: #2d4f65;
   font-size: 14px;
   line-height: 1.55;
 }
 
-.paper-abstract {
+.media-card-authors strong {
+  color: #16384f;
+}
+
+.media-card-abstract {
   display: -webkit-box;
-  -webkit-line-clamp: 3;
-  line-clamp: 3;
+  -webkit-line-clamp: 4;
+  line-clamp: 4;
   -webkit-box-orient: vertical;
   overflow: hidden;
   text-overflow: ellipsis;
-}
-
-.project-header {
-  margin-bottom: 8px;
-}
-
-.project-main {
-  display: grid;
-  grid-template-columns: minmax(360px, 42%) minmax(0, 1fr);
-  gap: 18px;
-  align-items: stretch;
-  min-height: 190px;
-}
-
-.project-media {
-  width: 100%;
-  aspect-ratio: 8 / 6;
-  overflow: hidden;
-}
-
-.project-cover {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  border-radius: 12px;
-  border: 1px solid rgba(18, 67, 98, 0.18);
-  box-shadow: 0 8px 18px rgba(15, 54, 80, 0.14);
-}
-
-.project-body {
-  border-top: 1px solid rgba(16, 64, 95, 0.12);
-  padding-top: 10px;
-  min-width: 0;
-}
-
-.project-period {
-  color: #0c3d5c;
-  font-weight: 700;
-}
-
-.project-name {
-  margin-top: 4px;
-  color: #0b3e5f;
-  font-size: 16px;
-  font-weight: 700;
 }
 
 .project-contrib-list {
@@ -341,27 +315,25 @@
     padding: 0;
   }
 
-  .paper-main {
+  .media-card-main {
     grid-template-columns: 1fr;
     min-height: 0;
   }
 
-  .project-main {
-    grid-template-columns: 1fr;
-    min-height: 0;
-  }
-
-  .paper-cover {
+  .media-card-image {
     height: 210px;
   }
 
-  .paper-media,
-  .project-media {
+  .media-card-media {
     aspect-ratio: auto;
   }
 
-  .project-cover {
-    height: 210px;
+  .media-card-content {
+    max-height: none;
+  }
+
+  .media-card-badge {
+    top: 10px;
   }
 
   .profile-card {
