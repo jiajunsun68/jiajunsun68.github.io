@@ -329,7 +329,7 @@
   }
 }
 
-@media (max-width: 991px) {
+@media (max-width: 780px) {
   .home-grid {
     grid-template-columns: 1fr;
     gap: 16px;

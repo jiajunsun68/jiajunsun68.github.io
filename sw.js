@@ -9,22 +9,28 @@
 // CACHE_NAMESPACE
 // CacheStorage is shared between all sites under same domain.
 // A namespace can prevent potential name conflicts and mis-deletion.
-const CACHE_NAMESPACE = 'main-'
+const CACHE_NAMESPACE = 'main-v3-'
 
 const CACHE = CACHE_NAMESPACE + 'precache-then-runtime';
 const PRECACHE_LIST = [
   "./",
   "./offline.html",
+  "./data/profile.json",
+  "./data/papers.json",
+  "./data/projects.json",
   "./js/jquery.min.js",
   "./js/bootstrap.min.js",
   "./js/hux-blog.min.js",
+  "./js/home.js",
   "./js/snackbar.js",
   "./img/icon_wechat.png",
   "./img/avatar-hux.jpg",
   "./img/home-bg.jpg",
   "./img/404-bg.jpg",
   "./css/hux-blog.min.css",
-  "./css/bootstrap.min.css"
+  "./css/bootstrap.min.css",
+  "./css/home.css",
+  "./data/imgs/paper-placeholder.svg"
   // "//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css",
   // "//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/fonts/fontawesome-webfont.woff2?v=4.6.3",
   // "//cdnjs.cloudflare.com/ajax/libs/fastclick/1.0.6/fastclick.min.js"
