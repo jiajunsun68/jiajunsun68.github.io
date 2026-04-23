@@ -48,10 +48,10 @@
 }
 
 .home-grid {
-  max-width: 1260px;
+  max-width: 1540px;
   margin: 0 auto;
   display: grid;
-  grid-template-columns: minmax(260px, 330px) minmax(0, 1fr);
+  grid-template-columns: minmax(220px, 290px) minmax(0, 1fr);
   gap: 24px;
   align-items: start;
   padding: 0 18px;
@@ -152,7 +152,7 @@
 }
 
 .content-card {
-  padding: 22px;
+  padding: 26px;
 }
 
 .content-card h2 {
@@ -164,15 +164,27 @@
 
 .paper-item,
 .project-item {
-  padding: 14px 0;
-  border-bottom: 1px solid rgba(16, 64, 95, 0.14);
+  padding: 18px;
+  border: 1px solid rgba(16, 64, 95, 0.14);
+  border-radius: 14px;
+  background: #ffffff;
+  margin-bottom: 14px;
 }
 
 .paper-item {
+  display: block;
+}
+
+.paper-header {
+  margin-bottom: 10px;
+}
+
+.paper-main {
   display: grid;
-  grid-template-columns: minmax(170px, 240px) minmax(0, 1fr);
-  gap: 16px;
-  align-items: start;
+  grid-template-columns: minmax(280px, 38%) minmax(0, 1fr);
+  gap: 18px;
+  align-items: stretch;
+  min-height: 220px;
 }
 
 .paper-media {
@@ -181,7 +193,7 @@
 
 .paper-cover {
   width: 100%;
-  height: 170px;
+  height: 100%;
   object-fit: cover;
   border-radius: 12px;
   border: 1px solid rgba(18, 67, 98, 0.18);
@@ -190,11 +202,14 @@
 
 .paper-body {
   min-width: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
 }
 
 .paper-item:last-child,
 .project-item:last-child {
-  border-bottom: none;
+  margin-bottom: 0;
 }
 
 .paper-tag {
@@ -206,14 +221,14 @@
 
 .paper-title a {
   color: #0a2f49;
-  font-size: 19px;
+  font-size: 20px;
   text-decoration: none;
   border-bottom: 1px solid rgba(10, 47, 73, 0.25);
 }
 
 .paper-title-text {
   color: #0a2f49;
-  font-size: 19px;
+  font-size: 20px;
   font-weight: 600;
 }
 
@@ -224,8 +239,25 @@
 .project-contrib {
   margin-top: 6px;
   color: #2d4f65;
-  font-size: 14px;
+  font-size: 15px;
   line-height: 1.65;
+}
+
+.paper-abstract {
+  display: -webkit-box;
+  -webkit-line-clamp: 4;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.project-header {
+  margin-bottom: 8px;
+}
+
+.project-body {
+  border-top: 1px solid rgba(16, 64, 95, 0.12);
+  padding-top: 10px;
 }
 
 .project-period {
@@ -272,8 +304,9 @@
     gap: 16px;
   }
 
-  .paper-item {
+  .paper-main {
     grid-template-columns: 1fr;
+    min-height: 0;
   }
 
   .paper-cover {

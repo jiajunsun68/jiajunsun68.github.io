@@ -30,6 +30,12 @@
     }
   }
 
+  function toSafeAuthorsHtml(authorsHtml, authorsText) {
+    if (authorsHtml) return authorsHtml;
+    if (!authorsText) return "";
+    return String(authorsText).replace(/\*\*(.+?)\*\*/g, "<strong>$1</strong>");
+  }
+
   function renderProfile(data) {
     var hero = data.hero || {};
     var profile = data.profile || {};
@@ -102,14 +108,8 @@
     list.innerHTML = "";
     papers.forEach(function (paper) {
       var item = createNode("article", "paper-item");
-      var media = createNode("div", "paper-media");
-      var mediaImg = createNode("img", "paper-cover");
-      mediaImg.src = resolveUrl(paper.image || "data/imgs/paper-placeholder.svg");
-      mediaImg.alt = paper.title || "paper cover";
-      media.appendChild(mediaImg);
-
-      var body = createNode("div", "paper-body");
-      body.appendChild(createNode("div", "paper-tag", "[" + (paper.venue || "Venue") + " " + (paper.year || "Year") + "]"));
+      var header = createNode("div", "paper-header");
+      header.appendChild(createNode("div", "paper-tag", "[" + (paper.venue || "Venue") + " " + (paper.year || "Year") + "]"));
 
       var title = createNode("div", "paper-title");
       if (paper.url) {
@@ -121,17 +121,32 @@
       } else {
         title.appendChild(createNode("span", "paper-title-text", paper.title || "Untitled"));
       }
-      body.appendChild(title);
+      header.appendChild(title);
+      item.appendChild(header);
 
+      var main = createNode("div", "paper-main");
+      var media = createNode("div", "paper-media");
+      var mediaImg = createNode("img", "paper-cover");
+      mediaImg.src = resolveUrl(paper.image || "data/imgs/paper-placeholder.svg");
+      mediaImg.alt = paper.title || "paper cover";
+      mediaImg.onerror = function () {
+        this.onerror = null;
+        this.src = resolveUrl("data/imgs/paper-placeholder.svg");
+      };
+      media.appendChild(mediaImg);
+
+      var body = createNode("div", "paper-body");
       var authors = createNode("div", "paper-authors");
-      setTextOrHtml(authors, "Authors: " + (paper.authorsHtml || paper.authors || ""), !!paper.authorsHtml);
+      var authorsHtml = toSafeAuthorsHtml(paper.authorsHtml, paper.authors);
+      setTextOrHtml(authors, "Authors: " + (authorsHtml || ""), !!authorsHtml);
       body.appendChild(authors);
 
       body.appendChild(createNode("div", "paper-field", "Field: " + (paper.field || "")));
       body.appendChild(createNode("div", "paper-abstract", "Abstract: " + (paper.abstract || "")));
 
-      item.appendChild(media);
-      item.appendChild(body);
+      main.appendChild(media);
+      main.appendChild(body);
+      item.appendChild(main);
 
       list.appendChild(item);
     });
@@ -150,9 +165,13 @@
     list.innerHTML = "";
     projects.forEach(function (project) {
       var item = createNode("article", "project-item");
-      item.appendChild(createNode("div", "project-period", project.period || ""));
-      item.appendChild(createNode("div", "project-name", project.name || ""));
-      item.appendChild(createNode("div", "project-org", project.organization || ""));
+      var header = createNode("div", "project-header");
+      header.appendChild(createNode("div", "project-period", project.period || ""));
+      header.appendChild(createNode("div", "project-name", project.name || ""));
+      item.appendChild(header);
+
+      var body = createNode("div", "project-body");
+      body.appendChild(createNode("div", "project-org", project.organization || ""));
 
       var contribWrap = createNode("ul", "project-contrib-list");
       var contributions = project.contributions || [];
@@ -161,10 +180,12 @@
           var li = createNode("li", "project-contrib", c);
           contribWrap.appendChild(li);
         });
-        item.appendChild(contribWrap);
+        body.appendChild(contribWrap);
       } else if (project.contribution) {
-        item.appendChild(createNode("div", "project-contrib", project.contribution));
+        body.appendChild(createNode("div", "project-contrib", project.contribution));
       }
+
+      item.appendChild(body);
 
       list.appendChild(item);
     });
