@@ -1,0 +1,45 @@
+<link rel="stylesheet" href="{{ site.baseurl }}/css/home.css">
+
+<section class="home-hero" id="home-hero">
+  <div class="home-hero-mask"></div>
+  <div class="home-hero-content">
+    <h1 id="hero-title">Sun Jiajun</h1>
+    <p id="hero-subtitle">Researcher in Computer Science</p>
+  </div>
+</section>
+
+<main class="home-main-wrap">
+  <section class="home-grid container-fluid">
+    <aside class="profile-column">
+      <div class="profile-card">
+        <img id="profile-avatar" src="{{ site.baseurl }}/img/SJJ.png" alt="avatar" class="profile-avatar">
+        <h2 id="profile-nickname" class="profile-nickname">SJJ</h2>
+        <p id="profile-signature" class="profile-signature">Keep hands and mind updated.</p>
+
+        <div class="profile-degree-group" id="profile-degrees"></div>
+
+        <div class="profile-links">
+          <h3>Links</h3>
+          <div id="profile-links-grid" class="profile-links-grid"></div>
+        </div>
+      </div>
+    </aside>
+
+    <section class="content-column">
+      <div class="content-card">
+        <h2>Papers</h2>
+        <div id="papers-list" class="papers-list"></div>
+      </div>
+
+      <div class="content-card">
+        <h2>Project Experience</h2>
+        <div id="projects-list" class="projects-list"></div>
+      </div>
+    </section>
+  </section>
+</main>
+
+<script>
+  window.SITE_BASEURL = "{{ site.baseurl }}";
+</script>
+<script src="{{ site.baseurl }}/js/home.js"></script>

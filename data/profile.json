@@ -1,0 +1,46 @@
+{
+  "hero": {
+    "background": "img/home-bg.jpg",
+    "title": "Sun Jiajun",
+    "subtitle": "Keep hands and mind updated"
+  },
+  "profile": {
+    "avatar": "img/SJJ.png",
+    "nickname": "SJJ",
+    "signature": "Researching efficient and reliable intelligence systems.",
+    "degrees": [
+      {
+        "name": "Harbin Institute of Technology",
+        "logo": "data/imgs/hit.svg",
+        "text": "Ph.D. in Computer Science, Harbin Institute of Technology"
+      },
+      {
+        "name": "Beihang University",
+        "logo": "data/imgs/buaa.svg",
+        "text": "M.S., Beihang University"
+      },
+      {
+        "name": "Shandong University",
+        "logo": "data/imgs/sdu.svg",
+        "text": "B.A., Shandong University"
+      }
+    ],
+    "links": [
+      {
+        "label": "Location",
+        "text": "Beijing, China",
+        "url": "https://maps.google.com/?q=Beijing"
+      },
+      {
+        "label": "Organization",
+        "text": "Harbin Institute of Technology",
+        "url": "https://www.hit.edu.cn"
+      },
+      {
+        "label": "Email",
+        "text": "jjsun0608@gmail.com",
+        "url": "mailto:jjsun0608@gmail.com"
+      }
+    ]
+  }
+}
