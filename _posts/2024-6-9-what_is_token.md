@@ -1,6 +1,6 @@
 ---
 layout:     post
-title:      "人生苦短，想一直懒"
+title:      "这个人很懒，甚至个人主页都一团糟"
 subtitle:   ""
 date:       2024-06-03 12:00:00
 author:     "SJJ"
