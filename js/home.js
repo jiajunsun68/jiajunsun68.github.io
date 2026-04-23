@@ -170,6 +170,17 @@
       header.appendChild(createNode("div", "project-name", project.name || ""));
       item.appendChild(header);
 
+      var main = createNode("div", "project-main");
+      var media = createNode("div", "project-media");
+      var mediaImg = createNode("img", "project-cover");
+      mediaImg.src = resolveUrl(project.image || "data/imgs/paper-placeholder.svg");
+      mediaImg.alt = project.name || "project cover";
+      mediaImg.onerror = function () {
+        this.onerror = null;
+        this.src = resolveUrl("data/imgs/paper-placeholder.svg");
+      };
+      media.appendChild(mediaImg);
+
       var body = createNode("div", "project-body");
       body.appendChild(createNode("div", "project-org", project.organization || ""));
 
@@ -185,7 +196,9 @@
         body.appendChild(createNode("div", "project-contrib", project.contribution));
       }
 
-      item.appendChild(body);
+      main.appendChild(media);
+      main.appendChild(body);
+      item.appendChild(main);
 
       list.appendChild(item);
     });
